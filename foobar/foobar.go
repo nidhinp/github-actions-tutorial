@@ -10,7 +10,7 @@ import (
 // of both 3 and 5 are rpelaced by "foobar".
 func Sequence(length int) ([]string, error) {
 	if length < 0 {
-		return nil, errors.New("length is negative!")
+		return nil, errors.New("length is negative")
 	}
 
 	seq := make([]string, length)
