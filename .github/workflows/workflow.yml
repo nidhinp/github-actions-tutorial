@@ -88,6 +88,9 @@ jobs:
         working-directory: ./manifests
         run: kustomize edit set image REPOSITORY:TAG=${IMAGE_REPOSITORY}:sha-${GITHUB_SHA::7}
 
+      # Deploy to Kubernetes.
+      - name: Deploy to Kubernetes
+        run: kubectl --kubeconfig kubeconfig.yml get ns
 
       # Deploy to Kubernetes.
       - name: Deploy to Kubernetes
