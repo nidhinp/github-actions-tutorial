@@ -4,8 +4,8 @@ set -e
 
 
 ### These are the parameters you can set when calling this script:
-NAMESPACE="${NAMESPACE:-default}"
-# NAMESPACE="modelrun"
+# NAMESPACE="${NAMESPACE:-default}"
+NAMESPACE="modelrun"
 ###
 
 
