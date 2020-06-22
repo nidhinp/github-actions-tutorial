@@ -49,8 +49,6 @@ jobs:
       # run a python script
       - name: Run python script
         run: python foobar.py
-        env:
-          GITHUB_WORKFLOW: workflow
   
   # build the docker hub images
   build-and-release:
