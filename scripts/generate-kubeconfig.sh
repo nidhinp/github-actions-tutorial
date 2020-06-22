@@ -4,10 +4,13 @@ set -e
 
 
 ### These are the parameters you can set when calling this script:
+# Before running this script run the following commands
+# kubectl create serviceaccount github-actions --namespace modelrun
+# kubectl create rolebinding github-actions --clusterrole admin --serviceaccount modelrun:github-actions -n modelrun
+
 # NAMESPACE="${NAMESPACE:-default}"
 NAMESPACE="modelrun"
 ###
-
 
 echo "⏳ Fetching service account credentials..."
 SA_SECRET_NAME=$(kubectl get serviceaccount github-actions --namespace "${NAMESPACE}" --output go-template='{{ (index .secrets 0).name }}')
