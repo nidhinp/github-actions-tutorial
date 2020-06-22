@@ -2,7 +2,6 @@ name: main-workflow
 
 env:
   IMAGE_REPOSITORY: nidhinmetocean/foobar
-  GITHUB_WORKFLOW: workflow
   KUBECTL_VERSION: "1.14.10"
   KUSTOMIZE_VERSION: "3.5.4"
 
@@ -50,6 +49,8 @@ jobs:
       # run a python script
       - name: Run python script
         run: python foobar.py
+        env:
+          - GITHUB_WORKFLOW: workflow
   
   # build the docker hub images
   build-and-release:
