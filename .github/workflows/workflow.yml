@@ -2,6 +2,7 @@ name: main-workflow
 
 env:
   IMAGE_REPOSITORY: nidhinmetocean/foobar
+  GITHUB_WORKFLOW: workflow
   KUBECTL_VERSION: "1.14.10"
   KUSTOMIZE_VERSION: "3.5.4"
 
