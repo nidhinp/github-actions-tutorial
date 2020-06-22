@@ -17,15 +17,10 @@ jobs:
   # Run all the unit tests
   run-tests:
     runs-on: ubuntu-latest
-
-    services:
-      image: postgres
-      env:
-      - POSTGRES_USER: dbadmin
-      - POSTGRES_PASSWORD: secretpassword
-      - POSTGRES_DB: modelrun
-      options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    
+    strategy:
+      matrix:
+        python-version: [3.7]
+      
       steps:
       # checkout the source code
       - name: Checkout source code
@@ -44,6 +39,16 @@ jobs:
       # run unit tests
       - name: Run unit tests
         run: go test -v ./...
+
+      # Setup python
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # run a python script
+      - name: Run python script
+        run: python foobar.py
   
   # build the docker hub images
   build-and-release:
