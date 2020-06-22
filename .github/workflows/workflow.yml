@@ -17,7 +17,16 @@ jobs:
   # Run all the unit tests
   run-tests:
     runs-on: ubuntu-latest
-    steps:
+
+    services:
+      image: postgres
+      env:
+      - POSTGRES_USER: dbadmin
+      - POSTGRES_PASSWORD: secretpassword
+      - POSTGRES_DB: modelrun
+      options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    
+      steps:
       # checkout the source code
       - name: Checkout source code
         uses: actions/checkout@v2
