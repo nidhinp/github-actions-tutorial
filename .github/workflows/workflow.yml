@@ -21,7 +21,7 @@ jobs:
       matrix:
         python-version: [3.7]
       
-      steps:
+    steps:
       # checkout the source code
       - name: Checkout source code
         uses: actions/checkout@v2
